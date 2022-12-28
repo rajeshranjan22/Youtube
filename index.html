@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+
+    <style>
+
+        .navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 2.5vw;
+}
+
+.toggle-btn{
+    width: 20px;
+    height: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle-btn span{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #979797;
+}
+
+.toggle-btn span:nth-child(1){
+    top: 0;
+}
+
+.toggle-btn span:nth-child(3){
+    top: 100%;
+}
+
+#logo{
+    height: 100px;
+    margin: -10px 30px 0;
+}
+
+.search-box{
+    position: relative;
+    max-width: 500px;
+    width: 50%;
+    height: 35px;
+    display: flex;
+}
+
+#query{
+    width: 85%;
+    height: 90%;
+    border: 2px solid #dbdbdb;
+    padding: 0 20px;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+#search{
+    width: 15%;
+    height: 100%;
+    background: #f0f0f0;
+    border: 2px solid #dbdbdb;
+    padding: 5px 0;
+    border-left: none;
+}
+
+
+
+#search img{
+    height: 100%;
+}
+
+.user-options{
+    height: 35px;
+    display: flex;
+    margin-left: 510px;
+    align-items: center;
+}
+
+.user-options .icon{
+    height: 80%;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.user-dp{
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-dp img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+#result{
+    /* width: calc(100% - 250px); */
+    margin-top: 120px;
+    margin-left: 150px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap:20px 5px;
+    
+      
+}
+
+#result>div>h5{
+
+    font-family: "Roboto","Arial",sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    max-height: 4rem;
+    color: white;
+    width: 70%;
+}
+
+
+#result>div>img{
+
+    width:350px;
+    height: 300px;
+}
+
+
+#fill{
+    margin-top: 100px;
+    margin-left: 250px;
+}
+
+
+
+
+/* ----------------side bar---------------- */
+.side-bar{
+    position: fixed;
+    top: 60px;
+    left: 0;
+    min-width: 100px;
+    width: 160px;
+    height: calc(100vh - 60px);
+    background:black;
+    padding-right: 1px;
+}
+
+.links{
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    color: #242424;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    font-family: "Roboto","Arial",sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.links img{
+    height: 25px;
+    margin-right: 20px;
+}
+
+.links:hover,
+.links.active{
+    background: rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.seperator{
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+
+body{
+    background-color: black;
+}
+ 
+#fil{
+
+    background-color: #474545;
+    border-radius: 5px;
+    border: none;
+    height: 22px;
+}
+
+#scan{
+
+    background-color: #474545;
+    border-radius: 5px;
+    border: none;
+    height: 25px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 480px){
+    #result{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        /* grid-template-rows: repeat(2, 20px); */
+    }
+}
+
+@media screen and (max-width: 780px){
+    #result{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(4, 20px);
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+<nav class="navbar">
+    <div class="toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- -----------YouTube KA LOgo hai ---->
+    <a href="./index.html">
+        <img  src="https://download.logo.wine/logo/YouTube/YouTube-Logo.wine.png" id="logo" alt="">
+    </a>
+
+      <!-- search Input ka hai -->
+    <div class="search-box">
+        <input type="text" id="query" placeholder="search">
+        <button onclick="getData()" id="search"><img src="https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-21.png" alt=""></button>
+    </div>
+          <!-- ICON OF navbar RIGHT the top -->
+
+    <div class="user-options">
+        <img src="https://img1.pnghut.com/0/8/23/vn0KfQLhvn/logo-rectangle-black-movie-camera-cinema.jpg" class="icon" alt="">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAdVBMVEX///8AAACHh4ehoaHQ0NAlJSUqKiru7u7x8fH4+Pj8/Pz09PSCgoLX19ecnJwtLS1HR0c5OTkRERFfX19mZma8vLxubm6oqKh6enq9vb0ZGRmTk5Ozs7PKysrDw8OmpqZVVVXm5uY+Pj4WFhZ0dHQLCwvd3d3LpKoYAAADmklEQVR4nO3d2XbaMBSFYQ/MmCEQMIMHIIH3f8SA09WkkpOj0LDgyP++6E3ZRh90sWpJoCCs0l5F3mU3q2jB5Y9J0gs8zHp3/COcFvcey43SjTaVcNq690huluH25Syc+PoOXjJcnoXbe4/iptl3gs69x3DjJN4LI4Tqg1B/EOoPQv35Wjj4Jj979NUdh8pVwl6RZVlapYzLmsTlyOyc0tpHfupkXbOT11/9Uyc3Af2sqqRWsr85OQhH01BKbHYWbalysF6VRHyapG+++JPvC8djGJuvSo0wFy4ThjNbKHamvyJ8EjtOwo7vwkL8F/fIwq3ZaaRwvUGIECHCWwsXL5qF0VAWZkfVQnMFxj+h/+8hQoSPL/T+k2ZlziUgRIgQIUKECBEifEDhq/fCJUKEVY62UFyveiThotMWMknNTnGQOjt7cVaqbCJLOBU7Lp+lvVFLirViPRQ7I3O0wV58mr1ZCeShnRzWDz0LQv1BqD8I9Qeh/iDUH4T6g1B/Gik8lbEQe5/3PpU6Nfu8pUpc1OzzFjIuXPZEzaS5kFlpdtZXzERFV8zTHH5lnoa5NoQIESJEiBAhQoQIESJEiBAhQoQIESJEiBAhQoQInYXiVWp+J0rVPu/8eS7keW12Wq9SZ2VtaU6lyry01oBXYmfs8E3nQa8rxfqZNLnTszp98WnML56f38Sfdxq5U8GzINQfhPqDUH8Q6g9C/UGoP40UDoZi7PtDsWJ9DfiqTv/nnRpha/ksZGmdvdNaSZ3EvseXKvPUusdPxI7LPb7/8zQNmGtDiBAhQoQIESJEiBAhQoQIESJEiBAhQoQIESJEiPCO+7zXqtYPT/FYSGyf6VxKndT+rS+pMrZ/6ysVOwuHM7s8C0L9Qag/CPUHof4g1B+E+oNQfxop9P+8J//P7PL/3LUGzLUhVC9cvGgWupxDut5oFrp8liJEiBAhQoQIEfogLNqahZHDN52VCx3W8REiRHhjIZ805+TiaB9ZuHU4/xAhQoQIEf6/sCVe5pGFscP6YQOE8qG7Y0so3jUfrhCuLKH4QjoJu+ssy9LPKT/yfnKyvc9bOtN5bJ/pXMjnM9v7vN//5mM8/4wzPQ/cXmr+dqfC4Iu4P/KXO+4XdxT6EIT6g1B/EOoPQv3xX5gER+u/0V6lOwnCSX7vUdwww9cwCMOddavgTYbjzUUY7nx9F3vbdlgJwydrdsOL5PPLJsTg/da4k0TeZT6raG+6dCBNV5gB1QAAAABJRU5ErkJggg==" class="icon" alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxhe-ASuMwazOloa4TsJcFAM-ijgR6V6EWxw&usqp=CAU" class="icon" alt="">
+
+        <!-- USER ICON  -->
+        <a href="./signup.html">
+            <div class="user-dp">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhyhj1gUUYu1c8817GfPwApJbYzW9lJdjSXQ&usqp=CAU" alt="">
+            </div>
+        </a>
+    </div>
+</nav>
+
+
+<div class="side-bar">
+    <a href="./index.html" class="links active"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHk1MsoqR8bptantoAIWZuTmi3PzGN6GMLuDTMDDBFSBg2XXUqVT1SmT9cQh1GvIzjQFU&usqp=CAU" alt="">home</a>
+    <a href="#" class="links"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDw9xilpY4ZL8pu5-gIg76ls9LqyvBvQs31FnxCJeK6eRqBBVhCiTcO8yPtBV00e_bgio&usqp=CAU" alt="">explore</a>
+    <a href="#" class="links"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4ayYMjn5BR5ghYFTHFMBaCCYxYTzW5gEn6C2aSQq_vK8_ELlsM3GUVH3khgjhsEtPfhk&usqp=CAU" alt="">short</a>
+    <a href="#" class="links"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFbVcJuymrI6TECtxFghayiMsid6d4A1wTKxxtmUOfT16cbAAWvvWK7JkGb__rAak6-FQ&usqp=CAU" alt="">subscription</a>
+    <hr class="seperator">
+    <a href="#" class="links"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv_RE8NQbsZoWb6zqdrcL-p0wdH1FLzZvyvQ&usqp=CAU" alt="">library</a>
+    <a href="#" class="links"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSszrhL5fyk1TRMqajbuEgUM5w99lTeqwIjemF2JpyyVh72ZbiZzT6mUZOFtJRXGwiv7RQ&usqp=CAU" alt="">history</a>
+    <a href="#" class="links"><img src="https://as2.ftcdn.net/v2/jpg/02/09/95/43/500_F_209954331_h0ef2mz41bPamc3ixzVS1yFeZ0Fr4dyc.jpg" alt="">your video</a>
+    <a href="#" class="links"><img src="https://i.pinimg.com/originals/29/85/fd/2985fd3031807ebe505068474042fffa.jpg" alt="">watch leater</a>
+    <a href="#" class="links"><img src="https://png.pngtree.com/png-vector/20190329/ourmid/pngtree-vector-like-icon-png-image_889454.jpg" alt="">like video</a>
+    <a href="#" class="links"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZz0EzgAnF0JfInKMpiIOHp63OGv7U3_rvzsKU1IwpOLfiajBlPiu0uVbw7KrmWeNRses&usqp=CAU" alt="">show more</a>
+</div>
+
+
+
+
+<div id="fill">
+<input type="text" id="fil">
+<button id="scan">Search</button>
+</div>
+  
+ <div id="result">
+    
+</div>
+    
+</body>
+</html>
+<script src="index.js"></script>
